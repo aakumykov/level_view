@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(mViewBinding.getRoot());
 
         mViewBinding.startButton.setOnClickListener(this::onStartButtonClicked);
-        mViewBinding.startButton.setOnClickListener(this::onStopButtonClicked);
+        mViewBinding.stopButton.setOnClickListener(this::onStopButtonClicked);
     }
 
     private void onStartButtonClicked(View view) {

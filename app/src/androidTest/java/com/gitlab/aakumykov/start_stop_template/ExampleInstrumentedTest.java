@@ -21,6 +21,6 @@ public class ExampleInstrumentedTest {
     public void useAppContext() {
         // Context of the app under test.
         Context appContext = InstrumentationRegistry.getInstrumentation().getTargetContext();
-        assertEquals("com.gitlab.aakumykov.networkrequesttest", appContext.getPackageName());
+        assertEquals("com.gitlab.aakumykov.start_stop_template", appContext.getPackageName());
     }
 }

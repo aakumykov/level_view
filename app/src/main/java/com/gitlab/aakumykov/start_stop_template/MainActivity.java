@@ -1,7 +1,6 @@
 package com.gitlab.aakumykov.start_stop_template;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -27,65 +26,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void onStartButtonClicked(View view) {
-        log("onStartButtonClicked()");
-        showProgressMessage("Работаю");
-
-        getWindow().getDecorView().postDelayed(() -> {
-            hideProgressMessage();
-            log("Поработал");
-        }, 1000);
+        showToast("Старт");
     }
 
     private void onStopButtonClicked(View view) {
-        log("onStopButtonClicked()");
+        showToast("Стоп");
     }
 
-
-    private void showProgressMessage(String msg) {
-        mViewBinding.messageView.post(() -> {
-            showProgressBar();
-            showInfo(msg);
-        });
-    }
-
-    private void hideProgressMessage() {
-        hideInfoAndError();
-        hideProgressBar();
-    }
-
-    private void showInfo(String text) {
-        mViewBinding.messageView.setText(text);
-        mViewBinding.messageView.setTextColor(getResources().getColor(R.color.info));
-        ViewUtils.show(mViewBinding.messageView);
-    }
-
-    private void showError(String text) {
-        showInfo(text);
-        mViewBinding.messageView.setTextColor(getResources().getColor(R.color.error));
-    }
-
-    private void hideInfoAndError() {
-        ViewUtils.hide(mViewBinding.messageView);
-    }
-
-    private void showProgressBar() {
-        ViewUtils.show(mViewBinding.progressBar);
-    }
-
-    private void hideProgressBar() {
-        ViewUtils.hide(mViewBinding.progressBar);
-    }
 
     private void showToast(String text) {
         Toast.makeText(this, text, Toast.LENGTH_SHORT).show();
     }
 
-    private void log(String s) {
-        Log.d(TAG, s);
-
-        mStringBuilder.append(s);
-        mStringBuilder.append("\n");
-
-        mViewBinding.outputView.setText(mStringBuilder.toString());
-    }
 }

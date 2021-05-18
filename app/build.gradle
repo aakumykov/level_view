@@ -7,7 +7,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        applicationId "com.gitlab.aakumykov.networkrequesttest"
+        applicationId "com.gitlab.aakumykov.start_stop_template"
         minSdkVersion 21
         targetSdkVersion 30
         versionCode 1

@@ -15,15 +15,18 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding mViewBinding;
     private final StringBuilder mStringBuilder = new StringBuilder();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         mViewBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mViewBinding.getRoot());
 
         mViewBinding.startButton.setOnClickListener(this::onStartButtonClicked);
         mViewBinding.stopButton.setOnClickListener(this::onStopButtonClicked);
     }
+
 
     private void onStartButtonClicked(View view) {
         showToast("Старт");

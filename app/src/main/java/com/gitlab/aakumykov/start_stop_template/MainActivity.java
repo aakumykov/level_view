@@ -13,7 +13,6 @@ public class MainActivity extends AppCompatActivity {
 
     private static final String TAG = MainActivity.class.getSimpleName();
     private ActivityMainBinding mViewBinding;
-    private final StringBuilder mStringBuilder = new StringBuilder();
 
 
     @Override

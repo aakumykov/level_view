@@ -4,26 +4,4 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
-
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/buttonStyle"
-        android:text="Старт"
-        android:textAllCaps="false"
-        android:textSize="18sp" />
-
-    <Button
-        android:id="@+id/stopButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        style="@style/buttonStyle"
-        android:backgroundTint="@color/pink_400"
-        android:text="Стоп"
-        android:textAllCaps="false"
-        android:textSize="18sp" />
-
-
-</LinearLayout>
+    tools:context=".MainActivity"/>

@@ -20,7 +20,15 @@ public class MainActivity extends AppCompatActivity {
         mViewBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mViewBinding.getRoot());
 
+        mViewBinding.button1.setOnClickListener(view -> {
+            mViewBinding.customView.setBgColor(
+                    getResources().getColor(R.color.teal_700)
+            );
+        });
 
+        mViewBinding.button2.setOnClickListener(view -> {
+            mViewBinding.customView.resetColor();
+        });
     }
 
 

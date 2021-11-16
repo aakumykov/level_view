@@ -13,9 +13,9 @@ import android.view.View;
 import androidx.annotation.ColorInt;
 import androidx.annotation.Nullable;
 
-public class CustomView extends View {
+public class LevelView extends View {
 
-    private static final String TAG = CustomView.class.getSimpleName();
+    private static final String TAG = LevelView.class.getSimpleName();
 
     @ColorInt private int mIndicatorColor;
     @ColorInt private final int mIndicatorColorDefault = Color.CYAN;
@@ -30,7 +30,7 @@ public class CustomView extends View {
     private Paint mPaint;
 
 
-    public CustomView(Context context, @Nullable AttributeSet attrs) {
+    public LevelView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
 
         mRect = new Rect();

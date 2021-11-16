@@ -2,5 +2,7 @@
 <resources>
     <declare-styleable name="CustomView">
         <attr name="cv_bg_color" format="color" />
+        <attr name="cv_level" format="integer" />
+        <attr name="cv_max" format="integer" />
     </declare-styleable>
 </resources>

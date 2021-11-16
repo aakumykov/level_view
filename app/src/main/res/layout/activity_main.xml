@@ -11,7 +11,10 @@
         android:id="@+id/customView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:cv_bg_color="#29B6F6" />
+        app:cv_bg_color="#29B6F6"
+        app:cv_level="50"
+        app:cv_max="100"
+    />
 
     <Button
         android:id="@+id/button1"

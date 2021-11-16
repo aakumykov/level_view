@@ -21,6 +21,9 @@ public class CustomView extends View {
     @ColorInt private int mBgColorInitial;
     @ColorInt private final int mBgColorDefault = Color.LTGRAY;
 
+    private int mLevel;
+    private int mMaxLevel;
+
     private Rect mRect;
     private Paint mPaint;
 
@@ -34,8 +37,42 @@ public class CustomView extends View {
         processAttributes(attrs);
     }
 
+    private void processAttributes(AttributeSet attrs) {
 
-    // Системные методы
+        TypedArray typedArray = getContext().getTheme()
+                .obtainStyledAttributes(
+                        attrs,
+                        R.styleable.CustomView,
+                        0,
+                        0
+                );
+
+        try {
+            mBgColorInitial = typedArray.getColor(
+                    R.styleable.CustomView_cv_bg_color,
+                    mBgColorDefault
+            );
+            mBgColor = mBgColorInitial;
+
+            mLevel = typedArray.getInteger(
+                    R.styleable.CustomView_cv_level,
+                    0
+            ) ;
+
+            mMaxLevel = typedArray.getInteger(
+                    R.styleable.CustomView_cv_max,
+                    0
+            );
+        }
+        catch (Exception e) {
+            Log.e(TAG, e.getMessage(), e);
+        }
+        finally {
+            typedArray.recycle();
+        }
+    }
+
+
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
@@ -48,10 +85,6 @@ public class CustomView extends View {
         calculateRectSize(width, height);
     }
 
-    private void calculateRectSize(int width, int height) {
-
-    }
-
     private int getViewWidth(int widthMeasureSpec) {
         int minW = getPaddingLeft() + getPaddingRight() + getSuggestedMinimumWidth();
         return resolveSizeAndState(minW, widthMeasureSpec, 1);
@@ -61,6 +94,32 @@ public class CustomView extends View {
         int minH = getPaddingTop() + getPaddingBottom() + getSuggestedMinimumHeight();
         return resolveSizeAndState(minH, heightMeasureSpec, 1);
     }
+
+    private void calculateRectSize(int widgetWidth, int widgetHeight) {
+        Log.d(TAG, "============ calculateRectSize() ============");
+
+        float levelFraction = mLevel * 1f / mMaxLevel;
+        int levelHeight = (int) (widgetHeight * levelFraction);
+
+        Log.d(TAG, "widget: "+widgetWidth+"x"+widgetHeight);
+        Log.d(TAG, "levelFraction: "+levelFraction);
+        Log.d(TAG, "levelHeight: "+levelHeight);
+
+        int x1 = 0;
+        int y1 = widgetHeight - levelHeight;
+        int x2 = widgetWidth;
+        int y2 = widgetHeight;
+
+        Log.d(TAG, "rect: "+x1+","+y1+" - "+x2+","+y2);
+
+        mRect.set(
+            x1,
+            y1,
+            x2,
+            y2
+        );
+    }
+
 
     @Override
     protected void onDraw(Canvas canvas) {
@@ -74,31 +133,10 @@ public class CustomView extends View {
     }
 
 
-    // Вспомогательнеые методы
-    private void processAttributes(AttributeSet attrs) {
-
-        TypedArray typedArray = getContext().getTheme()
-                .obtainStyledAttributes(
-                    attrs,
-                    R.styleable.CustomView,
-                    0,
-                    0
-                );
-
-        try {
-            mBgColorInitial = typedArray.getColor(
-                    R.styleable.CustomView_cv_bg_color,
-                    mBgColorDefault
-            );
-
-            mBgColor = mBgColorInitial;
-        }
-        catch (Exception e) {
-            Log.e(TAG, e.getMessage(), e);
-        }
-        finally {
-            typedArray.recycle();
-        }
+    // Публичные методы
+    public void setBgColor(@ColorInt int bgColor) {
+        mBgColor = bgColor;
+        refreshView();
     }
 
     public void resetColor() {
@@ -107,12 +145,7 @@ public class CustomView extends View {
     }
 
 
-    // Внешние методы
-    public void setBgColor(@ColorInt int bgColor) {
-        mBgColor = bgColor;
-        refreshView();
-    }
-
+    // Вспомогательнеые методы
     private void refreshView() {
         invalidate();
         requestLayout();

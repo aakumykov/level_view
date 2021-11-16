@@ -17,17 +17,18 @@ public class LevelView extends View {
 
     private static final String TAG = LevelView.class.getSimpleName();
 
-    @ColorInt private int mIndicatorColor;
-    @ColorInt private final int mIndicatorColorDefault = Color.CYAN;
+    @ColorInt private final int INDICATOR_COLOR_DEFAULT = Color.CYAN;
+    @ColorInt private final int BACKGROUND_COLOR_DEFAULT = Color.rgb(
+            245, 245, 245);
 
+    @ColorInt private int mIndicatorColor;
     @ColorInt private int mBackgroundColor;
-    @ColorInt private final int mBackgroundColorDefault = Color.LTGRAY;
 
     private int mCurrentLevel;
     private int mMaxLevel;
 
-    private Rect mRect;
-    private Paint mPaint;
+    private final Rect mRect;
+    private final Paint mPaint;
 
 
     public LevelView(Context context, @Nullable AttributeSet attrs) {
@@ -52,12 +53,12 @@ public class LevelView extends View {
         try {
             mIndicatorColor = typedArray.getColor(
                     R.styleable.CustomView_cv_indicator_color,
-                    mIndicatorColorDefault
+                    INDICATOR_COLOR_DEFAULT
             );
 
             mBackgroundColor = typedArray.getColor(
                     R.styleable.CustomView_cv_background_color,
-                    mBackgroundColorDefault
+                    BACKGROUND_COLOR_DEFAULT
             );
 
             mCurrentLevel = typedArray.getInteger(
@@ -133,8 +134,7 @@ public class LevelView extends View {
 
         canvas.drawColor(mBackgroundColor);
 
-        mPaint.setColor(Color.MAGENTA);
-
+        mPaint.setColor(mIndicatorColor);
         canvas.drawRect(mRect, mPaint);
     }
 

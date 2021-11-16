@@ -17,11 +17,13 @@ public class CustomView extends View {
 
     private static final String TAG = CustomView.class.getSimpleName();
 
-    @ColorInt private int mBgColor;
-    @ColorInt private int mBgColorInitial;
-    @ColorInt private final int mBgColorDefault = Color.LTGRAY;
+    @ColorInt private int mIndicatorColor;
+    @ColorInt private final int mIndicatorColorDefault = Color.CYAN;
 
-    private int mLevel;
+    @ColorInt private int mBackgroundColor;
+    @ColorInt private final int mBackgroundColorDefault = Color.LTGRAY;
+
+    private int mCurrentLevel;
     private int mMaxLevel;
 
     private Rect mRect;
@@ -48,19 +50,23 @@ public class CustomView extends View {
                 );
 
         try {
-            mBgColorInitial = typedArray.getColor(
-                    R.styleable.CustomView_cv_bg_color,
-                    mBgColorDefault
+            mIndicatorColor = typedArray.getColor(
+                    R.styleable.CustomView_cv_indicator_color,
+                    mIndicatorColorDefault
             );
-            mBgColor = mBgColorInitial;
 
-            mLevel = typedArray.getInteger(
+            mBackgroundColor = typedArray.getColor(
+                    R.styleable.CustomView_cv_background_color,
+                    mBackgroundColorDefault
+            );
+
+            mCurrentLevel = typedArray.getInteger(
                     R.styleable.CustomView_cv_level,
                     0
             ) ;
 
             mMaxLevel = typedArray.getInteger(
-                    R.styleable.CustomView_cv_max,
+                    R.styleable.CustomView_cv_max_level,
                     0
             );
         }
@@ -98,7 +104,7 @@ public class CustomView extends View {
     private void calculateRectSize(int widgetWidth, int widgetHeight) {
         Log.d(TAG, "============ calculateRectSize() ============");
 
-        float levelFraction = mLevel * 1f / mMaxLevel;
+        float levelFraction = mCurrentLevel * 1f / mMaxLevel;
         int levelHeight = (int) (widgetHeight * levelFraction);
 
         Log.d(TAG, "widget: "+widgetWidth+"x"+widgetHeight);
@@ -125,7 +131,7 @@ public class CustomView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawColor(mBgColor);
+        canvas.drawColor(mBackgroundColor);
 
         mPaint.setColor(Color.MAGENTA);
 
@@ -134,14 +140,32 @@ public class CustomView extends View {
 
 
     // Публичные методы
-    public void setBgColor(@ColorInt int bgColor) {
-        mBgColor = bgColor;
+    public void setIndicatorColor(@ColorInt int indicatorColor) {
+        mIndicatorColor = indicatorColor;
         refreshView();
     }
 
-    public void resetColor() {
-        mBgColor = mBgColorInitial;
+    public void setBackgroundColor(@ColorInt int backgroundColor) {
+        mBackgroundColor = backgroundColor;
         refreshView();
+    }
+
+    public void setLevel(int level) {
+        mCurrentLevel = level;
+        refreshView();
+    }
+
+    public int getLevel() {
+        return mCurrentLevel;
+    }
+
+    public void setMaxLevel(int maxLevel) {
+        mMaxLevel = maxLevel;
+        refreshView();
+    }
+
+    public int getMaxLevel() {
+        return mMaxLevel;
     }
 
 

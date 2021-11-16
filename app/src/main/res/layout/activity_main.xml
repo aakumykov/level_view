@@ -11,23 +11,18 @@
         android:id="@+id/customView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:cv_bg_color="#29B6F6"
-        app:cv_level="50"
-        app:cv_max="100"
+        app:cv_indicator_color="#29B6F6"
+        app:cv_background_color="#F6F6F6"
+        app:cv_level="10"
+        app:cv_max_level="100"
     />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
+    <SeekBar
+        android:id="@+id/seekBar"
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Новый цвет" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:text="Восстановить цвет" />
+        android:max="100"
+        />
 
 </LinearLayout>

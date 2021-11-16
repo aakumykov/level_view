@@ -1,6 +1,7 @@
 package com.gitlab.aakumykov.start_stop_template;
 
 import android.os.Bundle;
+import android.widget.SeekBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -20,16 +21,31 @@ public class MainActivity extends AppCompatActivity {
         mViewBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mViewBinding.getRoot());
 
-        mViewBinding.button1.setOnClickListener(view -> {
-            mViewBinding.customView.setBgColor(
-                    getResources().getColor(R.color.teal_700)
-            );
-        });
+        mViewBinding.customView.setMaxLevel(
+                mViewBinding.seekBar.getMax()
+        );
 
-        mViewBinding.button2.setOnClickListener(view -> {
-            mViewBinding.customView.resetColor();
+        mViewBinding.seekBar.setProgress(
+                mViewBinding.customView.getLevel()
+        );
+
+        mViewBinding.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                if (fromUser) {
+                    mViewBinding.customView.setLevel(progress);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+
+            }
         });
     }
-
-
 }

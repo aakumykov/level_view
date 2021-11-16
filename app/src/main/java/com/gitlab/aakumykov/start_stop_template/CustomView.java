@@ -4,6 +4,8 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Rect;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -14,13 +16,21 @@ import androidx.annotation.Nullable;
 public class CustomView extends View {
 
     private static final String TAG = CustomView.class.getSimpleName();
+
     @ColorInt private int mBgColor;
     @ColorInt private int mBgColorInitial;
     @ColorInt private final int mBgColorDefault = Color.LTGRAY;
 
+    private Rect mRect;
+    private Paint mPaint;
+
 
     public CustomView(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
+
+        mRect = new Rect();
+        mPaint = new Paint();
+
         processAttributes(attrs);
     }
 
@@ -29,6 +39,27 @@ public class CustomView extends View {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
+
+        int width = getViewWidth(widthMeasureSpec);
+        int height = getViewHeight(heightMeasureSpec);
+
+        setMeasuredDimension(width, height);
+
+        calculateRectSize(width, height);
+    }
+
+    private void calculateRectSize(int width, int height) {
+
+    }
+
+    private int getViewWidth(int widthMeasureSpec) {
+        int minW = getPaddingLeft() + getPaddingRight() + getSuggestedMinimumWidth();
+        return resolveSizeAndState(minW, widthMeasureSpec, 1);
+    }
+
+    private int getViewHeight(int heightMeasureSpec) {
+        int minH = getPaddingTop() + getPaddingBottom() + getSuggestedMinimumHeight();
+        return resolveSizeAndState(minH, heightMeasureSpec, 1);
     }
 
     @Override
@@ -36,6 +67,10 @@ public class CustomView extends View {
         super.onDraw(canvas);
 
         canvas.drawColor(mBgColor);
+
+        mPaint.setColor(Color.MAGENTA);
+
+        canvas.drawRect(mRect, mPaint);
     }
 
 

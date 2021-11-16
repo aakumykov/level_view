@@ -42,12 +42,13 @@ public class CustomView extends View {
     // Вспомогательнеые методы
     private void processAttributes(AttributeSet attrs) {
 
-        TypedArray typedArray = getResources().newTheme().obtainStyledAttributes(
-                attrs,
-                R.styleable.CustomView,
-                0,
-                0
-        );
+        TypedArray typedArray = getContext().getTheme()
+                .obtainStyledAttributes(
+                    attrs,
+                    R.styleable.CustomView,
+                    0,
+                    0
+                );
 
         try {
             mBgColorInitial = typedArray.getColor(

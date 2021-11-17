@@ -26,14 +26,14 @@ public class MainActivity extends AppCompatActivity {
         );
 
         mViewBinding.seekBar.setProgress(
-                mViewBinding.customView.getLevel()
+                50
         );
 
         mViewBinding.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    mViewBinding.customView.setLevel(progress);
+                    mViewBinding.customView.setLevel(progress - 10);
                 }
             }
 

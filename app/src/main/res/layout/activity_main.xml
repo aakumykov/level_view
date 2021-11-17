@@ -11,11 +11,8 @@
         android:id="@+id/customView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:cv_indicator_color="#29B6F6"
-        app:cv_background_color="#F6F6F6"
-        app:cv_level="10"
-        app:cv_max_level="100"
-    />
+        app:cv_level="-10"
+        app:cv_max_level="-100" />
 
     <SeekBar
         android:id="@+id/seekBar"

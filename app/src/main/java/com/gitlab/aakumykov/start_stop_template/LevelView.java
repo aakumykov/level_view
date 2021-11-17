@@ -37,10 +37,10 @@ public class LevelView extends View {
         mRect = new Rect();
         mPaint = new Paint();
 
-        processAttributes(attrs);
+        readAttributes(attrs);
     }
 
-    private void processAttributes(AttributeSet attrs) {
+    private void readAttributes(AttributeSet attrs) {
 
         TypedArray typedArray = getContext().getTheme()
                 .obtainStyledAttributes(
@@ -64,7 +64,7 @@ public class LevelView extends View {
             mCurrentLevel = typedArray.getInteger(
                     R.styleable.CustomView_cv_level,
                     0
-            ) ;
+            );
 
             mMaxLevel = typedArray.getInteger(
                     R.styleable.CustomView_cv_max_level,

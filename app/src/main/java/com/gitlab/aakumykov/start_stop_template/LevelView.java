@@ -45,29 +45,29 @@ public class LevelView extends View {
         TypedArray typedArray = getContext().getTheme()
                 .obtainStyledAttributes(
                         attrs,
-                        R.styleable.CustomView,
+                        R.styleable.LevelView,
                         0,
                         0
                 );
 
         try {
             mIndicatorColor = typedArray.getColor(
-                    R.styleable.CustomView_cv_indicator_color,
+                    R.styleable.LevelView_cv_indicator_color,
                     INDICATOR_COLOR_DEFAULT
             );
 
             mBackgroundColor = typedArray.getColor(
-                    R.styleable.CustomView_cv_background_color,
+                    R.styleable.LevelView_cv_background_color,
                     BACKGROUND_COLOR_DEFAULT
             );
 
             mCurrentLevel = typedArray.getInteger(
-                    R.styleable.CustomView_cv_level,
+                    R.styleable.LevelView_cv_level,
                     0
             );
 
             mMaxLevel = typedArray.getInteger(
-                    R.styleable.CustomView_cv_max_level,
+                    R.styleable.LevelView_cv_max_level,
                     0
             );
         }

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="CustomView">
+    <declare-styleable name="LevelView">
         <attr name="cv_indicator_color" format="color" />
         <attr name="cv_background_color" format="color" />
 

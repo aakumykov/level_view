@@ -103,21 +103,21 @@ public class LevelView extends View {
     }
 
     private void calculateRectSize(int widgetWidth, int widgetHeight) {
-        Log.d(TAG, "============ calculateRectSize() ============");
+        //Log.d(TAG, "============ calculateRectSize() ============");
 
         float levelFraction = mCurrentLevel * 1f / mMaxLevel;
         int levelHeight = (int) (widgetHeight * levelFraction);
 
-        Log.d(TAG, "widget: "+widgetWidth+"x"+widgetHeight);
-        Log.d(TAG, "levelFraction: "+levelFraction);
-        Log.d(TAG, "levelHeight: "+levelHeight);
+        //Log.d(TAG, "widget: "+widgetWidth+"x"+widgetHeight);
+        //Log.d(TAG, "levelFraction: "+levelFraction);
+        //Log.d(TAG, "levelHeight: "+levelHeight);
 
         int x1 = 0;
         int y1 = widgetHeight - levelHeight;
         int x2 = widgetWidth;
         int y2 = widgetHeight;
 
-        Log.d(TAG, "rect: "+x1+","+y1+" - "+x2+","+y2);
+        //Log.d(TAG, "rect: "+x1+","+y1+" - "+x2+","+y2);
 
         mRect.set(
             x1,

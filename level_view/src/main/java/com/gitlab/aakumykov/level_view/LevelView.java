@@ -1,4 +1,4 @@
-package com.gitlab.aakumykov.start_stop_template;
+package com.gitlab.aakumykov.level_view;
 
 import android.content.Context;
 import android.content.res.TypedArray;

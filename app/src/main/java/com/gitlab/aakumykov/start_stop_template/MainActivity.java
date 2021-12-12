@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         mViewBinding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(mViewBinding.getRoot());
 
-        mViewBinding.customView.setMaxLevel(
+        mViewBinding.levelView.setMaxLevel(
                 mViewBinding.seekBar.getMax()
         );
 
@@ -33,7 +33,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    mViewBinding.customView.setLevel(progress - 10);
+                    mViewBinding.levelView.setLevel(progress - 10);
                 }
             }
 

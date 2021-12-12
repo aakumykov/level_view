@@ -7,8 +7,8 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-    <com.gitlab.aakumykov.start_stop_template.LevelView
-        android:id="@+id/customView"
+    <com.gitlab.aakumykov.level_view.LevelView
+        android:id="@+id/levelView"
         android:layout_width="100dp"
         android:layout_height="100dp"
         app:cv_level="-10"

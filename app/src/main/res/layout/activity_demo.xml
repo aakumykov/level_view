@@ -5,14 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".DemoActivity">
 
     <com.gitlab.aakumykov.level_view.LevelView
         android:id="@+id/levelView"
         android:layout_width="100dp"
         android:layout_height="100dp"
-        app:cv_level="-10"
-        app:cv_max_level="-100" />
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        tools:cv_level="50"
+        tools:cv_max_level="100" />
 
     <SeekBar
         android:id="@+id/seekBar"
@@ -20,6 +22,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:max="100"
+        tools:progress="50"
         />
 
 </LinearLayout>

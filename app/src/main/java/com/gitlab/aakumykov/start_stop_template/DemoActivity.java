@@ -5,35 +5,29 @@ import android.widget.SeekBar;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.gitlab.aakumykov.start_stop_template.databinding.ActivityMainBinding;
+import com.gitlab.aakumykov.start_stop_template.databinding.ActivityDemoBinding;
 
 
-public class MainActivity extends AppCompatActivity {
+public class DemoActivity extends AppCompatActivity {
 
-    private static final String TAG = MainActivity.class.getSimpleName();
-    private ActivityMainBinding mViewBinding;
+    private static final String TAG = DemoActivity.class.getSimpleName();
+    private ActivityDemoBinding mViewBinding;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        mViewBinding = ActivityMainBinding.inflate(getLayoutInflater());
+        mViewBinding = ActivityDemoBinding.inflate(getLayoutInflater());
         setContentView(mViewBinding.getRoot());
 
-        mViewBinding.levelView.setMaxLevel(
-                mViewBinding.seekBar.getMax()
-        );
-
-        mViewBinding.seekBar.setProgress(
-                50
-        );
+        mViewBinding.seekBar.setProgress(50);
 
         mViewBinding.seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 if (fromUser) {
-                    mViewBinding.levelView.setLevel(progress - 10);
+                    mViewBinding.levelView.setLevel(progress);
                 }
             }
 
@@ -47,5 +41,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        mViewBinding.levelView.setMaxLevel(
+                mViewBinding.seekBar.getMax()
+        );
+
+        mViewBinding.levelView.setLevel(
+                mViewBinding.seekBar.getProgress()
+        );
     }
 }

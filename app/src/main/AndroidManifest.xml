@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.LevelView">
 
-        <activity android:name="com.gitlab.aakumykov.start_stop_template.MainActivity"
+        <activity android:name="com.gitlab.aakumykov.start_stop_template.DemoActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
